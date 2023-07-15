@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ls=$(cat /sys/class/power_supply/BAT0/capacity)
+notify-send "Battery " $ls% -i /usr/share/icons/Adwaita/32x32/status/battery-level-90-symbolic.symbolic.png

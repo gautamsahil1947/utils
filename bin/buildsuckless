@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd /home/$(whoami)/.config/repos
+echo $(pwd)
+
+cd dwm && sudo make clean install && cd ..
+cd st && sudo make clean install && cd ..
+cd dmenu && sudo make clean install && cd ..
+
+echo "done" | dmenu
+

@@ -1,0 +1,21 @@
+auto-reload yes
+
+# unbind keys
+unbind-key ENTER
+unbind-key j
+unbind-key k
+unbind-key J
+unbind-key K
+
+# vim-keys
+bind-key h quit
+bind-key j down
+bind-key k up
+bind-key l open
+
+# link capabilities
+
+browser "linkhandler %u"
+
+# macros
+# macro b set browser "brave %u"; open-in-browser

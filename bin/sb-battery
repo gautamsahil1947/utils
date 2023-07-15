@@ -1,0 +1,11 @@
+#!/bin/bash
+
+percentage=$(cat /sys/class/power_supply/BAT0/capacity)
+Charging=$(cat /sys/class/power_supply/BAT0/status | grep "Charging")
+
+if [ $Charging = "Charging" ]
+then 
+        echo " 󰂄 $percentage% "
+else
+        echo " 󰂁 $percentage% "
+fi

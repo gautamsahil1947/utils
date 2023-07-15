@@ -1,0 +1,17 @@
+#!/bin/bash
+
+status=$(xrandr -q | grep "^DP-1 connected")
+
+if [ -z $status ]
+then
+        # normal laptop display stuff
+        figlet "0"
+        xwallpaper --zoom /home/sahil/.config/repos/Pictures/wallpapers/wallpaper6.png
+else
+        # dual monitor stuff
+        figlet "1"
+        xwallpaper --output eDP-1 --zoom /home/sahil/.config/repos/Pictures/wallpapers/wallpaper6.png
+        xrandr --output DP-1 --mode 1360x768 --left-of eDP-1 &
+        xwallpaper --output DP-1 --zoom /home/sahil/.config/repos/Pictures/wallpapers/wallpaper6.png
+fi
+
