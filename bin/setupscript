@@ -1,0 +1,16 @@
+#!/bin/bash
+
+while true
+do
+        figlet "inside while"
+        percentage=$(cat /sys/class/power_supply/BAT0/capacity)
+        charging=$(cat /sys/class/power_supply/BAT0/status | grep "Charging")
+
+        if [ $charging = "Discharging" ]
+        then
+
+                i
+                
+        fi
+        wait 10
+done

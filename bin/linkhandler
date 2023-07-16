@@ -14,6 +14,6 @@ else
 fi
 
 echo $url
-notify-send "Link Handler" "Opening in MPV"
+notify-send "Link Handler" "Opening in MPV" -i /home/sahil/.config/repos/Pictures/icons/youtube48.png
 
 setsid -f mpv $url > /dev/null 2>&1
