@@ -1,16 +1,46 @@
 #!/bin/bash
 
+# this one says
+# pgrep all the pids of current script
+#       if pid not equal to current script's pid
+#               kill it
+
+for pid in $(pgrep -f $0); do
+    if [ $pid != $$ ]; then
+        kill $pid
+    fi 
+done
+
+i=1
+time=4000 # time in ms (milliseconds)
+
 while true
 do
-        figlet "inside while"
         percentage=$(cat /sys/class/power_supply/BAT0/capacity)
         charging=$(cat /sys/class/power_supply/BAT0/status | grep "Charging")
 
-        if [ $charging = "Discharging" ]
+        if [ -z $charging ]
         then
+                # if the battery is not charging
+                if [ $percentage -le 30 ]
+                then
+                        notify-send -u critical -t $time "Battery" "$percentage%" -i /home/sahil/.config/repos/Pictures/icons/battery64.png
+                        i=0
+                fi
 
-                i
-                
+        else
+                # if the battery is charging
+                if [ $i -eq 0 ]
+                then
+                        notify-send -u low -t $time "Battery" "$percentage%" -i /home/sahil/.config/repos/Pictures/icons/battery64.png
+                        i=1
+                fi
+
+                if [ $percentage -ge 90 ]
+                then
+                        notify-send -u low -t $time "Unplug Charger" "$percentage%" -i /home/sahil/.config/repos/Pictures/icons/battery64.png
+                fi
         fi
-        wait 10
+
+        sleep $(( $time / 1000 ))
 done

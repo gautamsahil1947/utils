@@ -1,4 +1,0 @@
-#!/bin/bash
-
-ls=$(cat /sys/class/power_supply/BAT0/capacity)
-notify-send "Battery " $ls% -i /home/sahil/.config/repos/Pictures/icons/battery64.png

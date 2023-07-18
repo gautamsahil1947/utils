@@ -7,13 +7,13 @@
 
 if [ $# -ne 1 ]
 then
-        figlet nourl
+        notify-send "Link Handler" "No URL" -i /home/sahil/.config/repos/Pictures/icons/youtube64.png
         exit 1
 else
         url=$1
 fi
 
 echo $url
-notify-send "Link Handler" "Opening in MPV" -i /home/sahil/.config/repos/Pictures/icons/youtube48.png
+notify-send "Link Handler" "Opening in MPV" -i /home/sahil/.config/repos/Pictures/icons/youtube64.png
 
 setsid -f mpv $url > /dev/null 2>&1
