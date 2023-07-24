@@ -5,11 +5,11 @@
 if [ $1 = "up" ]
 then
         light -A 5
-        value=$(light)
-        notify-send -u low -t 1000 -r 1234123 "Backlight" "$value%" -i /home/sahil/.config/repos/Pictures/icons/sunrise64.png
+        # value=$(light)
+        # notify-send -u low -t 1000 -r 1234123 "Backlight" "$value%" -i /home/sahil/.config/repos/Pictures/icons/sunrise64.png
 else
         light -U 5
-        value=$(light)
-        notify-send -u low -t 1000 -r 1234123 "Backlight" "$value%" -i /home/sahil/.config/repos/Pictures/icons/sunset64.png
+        # value=$(light)
+        # notify-send -u low -t 1000 -r 1234123 "Backlight" "$value%" -i /home/sahil/.config/repos/Pictures/icons/sunset64.png
 fi
 

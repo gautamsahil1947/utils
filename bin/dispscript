@@ -2,17 +2,26 @@
 
 status=$(xrandr -q | grep "^DP-1 connected")
 
+wallpaper="/home/sahil/.config/repos/Pictures/wallpapers/second.jpg"
+
 if [ -z $status ]
 then
         # normal laptop display stuff
-        figlet "0"
-        xwallpaper --zoom /home/sahil/.config/repos/Pictures/wallpapers/wallpaper6.png
+        xwallpaper --zoom $wallpaper
 else
         # dual monitor stuff
-        figlet "1"
-        xwallpaper --output eDP-1 --zoom /home/sahil/.config/repos/Pictures/wallpapers/wallpaper6.png
+        xwallpaper --output eDP-1 --zoom $wallpaper
         xrandr --output DP-1 --mode 1360x768 --left-of eDP-1 &
         # xrandr --output DP-1 --primary --mode 1360x768 --left-of eDP-1 &
-        xwallpaper  --output DP-1 --zoom /home/sahil/.config/repos/Pictures/wallpapers/wallpaper6.png
+        xwallpaper  --output DP-1 --zoom $wallpaper
+fi
+
+currentWal=$(cat /home/sahil/.cache/wal/wal)
+
+if [ $wallpaper = $currentWal ]
+then
+    echo "same wallpaper"
+else
+    wal -i $wallpaper
 fi
 

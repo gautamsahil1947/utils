@@ -22,7 +22,7 @@ do
         if [ -z $charging ]
         then
                 # if the battery is not charging
-                if [ $percentage -le 30 ]
+                if [ $percentage -le 25 ]
                 then
                         notify-send -u critical -t $time "Battery" "$percentage%" -i /home/sahil/.config/repos/Pictures/icons/battery64.png
                         i=0
