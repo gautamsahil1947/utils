@@ -10,18 +10,10 @@ then
         xwallpaper --zoom $wallpaper
 else
         # dual monitor stuff
-        xwallpaper --output eDP-1 --zoom $wallpaper
         xrandr --output DP-1 --mode 1360x768 --left-of eDP-1 &
         # xrandr --output DP-1 --primary --mode 1360x768 --left-of eDP-1 &
+        xwallpaper --output eDP-1 --zoom $wallpaper
         xwallpaper  --output DP-1 --zoom $wallpaper
 fi
 
-currentWal=$(cat /home/sahil/.cache/wal/wal)
-
-if [ $wallpaper = $currentWal ]
-then
-    echo "same wallpaper"
-else
-    wal -i $wallpaper
-fi
 
