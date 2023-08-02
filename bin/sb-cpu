@@ -1,0 +1,5 @@
+#!/bin/sh
+
+
+result=$(sensors | awk '/Core 0/ {print "🌡" $3}')
+echo "[$result]"
