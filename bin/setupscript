@@ -16,31 +16,31 @@ time=4000 # time in ms (milliseconds)
 
 while true
 do
-        percentage=$(cat /sys/class/power_supply/BAT0/capacity)
-        charging=$(cat /sys/class/power_supply/BAT0/status | grep "Charging")
+    percentage=$(cat /sys/class/power_supply/BAT0/capacity)
+    charging=$(cat /sys/class/power_supply/BAT0/status | grep "Charging")
 
-        if [ -z $charging ]
+    if [ -z $charging ]
+    then
+        # if the battery is not charging
+        if [ $percentage -le 25 ]
         then
-                # if the battery is not charging
-                if [ $percentage -le 25 ]
-                then
-                        notify-send -u critical -t $time "Battery" "$percentage%" -i /home/sahil/.config/repos/Pictures/icons/battery64.png
-                        i=0
-                fi
+            notify-send -u critical -t $time "Battery" "$percentage%" -i /home/sahil/.config/repos/Pictures/icons/battery64.png
+            i=0
+        fi
 
-        else
-                # if the battery is charging
-                if [ $i -eq 0 ]
-                then
-                        notify-send -u low -t $time "Battery" "$percentage%" -i /home/sahil/.config/repos/Pictures/icons/battery64.png
-                        i=1
-                fi
+    else
+        # if the battery is charging
+        if [ $i -eq 0 ]
+        then
+            notify-send -u low -t $time "Battery" "$percentage%" -i /home/sahil/.config/repos/Pictures/icons/battery64.png
+            i=1
+        fi
 
-                if [ $percentage -ge 90 ]
-                then
-                        notify-send -u low -t $time "Unplug Charger" "$percentage%" -i /home/sahil/.config/repos/Pictures/icons/battery64.png
-                fi
+        if [ $percentage -ge 90 ]
+        then
+            notify-send -u low -t $time "Unplug Charger" "$percentage%" -i /home/sahil/.config/repos/Pictures/icons/battery64.png
+        fi
         fi
 
         sleep $(( $time / 1000 ))
-done
+    done

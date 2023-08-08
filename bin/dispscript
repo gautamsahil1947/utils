@@ -2,18 +2,23 @@
 
 status=$(xrandr -q | grep "^DP-1 connected")
 
-wallpaper="/home/sahil/.config/repos/Pictures/wallpapers/second.jpg"
+wallpaper="/home/sahil/.config/repos/Pictures/mainwallpapers/n2.jpg"
 
 if [ -z $status ]
 then
-        # normal laptop display stuff
-        xwallpaper --zoom $wallpaper
+    # normal laptop display stuff
+    xwallpaper --zoom $wallpaper
 else
-        # dual monitor stuff
-        xrandr --output DP-1 --mode 1360x768 --left-of eDP-1 &
-        # xrandr --output DP-1 --primary --mode 1360x768 --left-of eDP-1 &
-        xwallpaper --output eDP-1 --zoom $wallpaper
-        xwallpaper  --output DP-1 --zoom $wallpaper
+
+    xrandr --output DP-1 --mode 1366x768 --left-of eDP-1 &
+    # xrandr --output DP-1 --primary --mode 1360x768 --left-of eDP-1 &
+
+    xwallpaper --output eDP-1 --zoom $wallpaper
+    xwallpaper  --output DP-1 --zoom $wallpaper
 fi
 
-
+# create a dmenu prompt using this, so that
+# I can select the resolution and the orientation of the new monitor
+# or projector, if that is the case (yes)
+#
+# for my daily one, i can have some presets.

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# need to make it work with debian and fedora also
+# make it compatible with other init systems also
 
 if commnad -v figlet > /dev/null
 then
@@ -11,41 +13,39 @@ flags="-S"
 packages="virt-manager qemu vde2 ebtables dnsmasq bridge-utils openbsd-netcat"
 
 
-# -------------------------------- checking whether virtualization is enabled or not --------------------
-# left for AMD-v
+########## checking whether virtualization is enabled or not ###############
 
 LC_ALL=C lscpu | grep Virtualization >> virt.txt
-
+# left for AMD-v
 if grep -q "VT-x$" virt.txt 
 then
-    echo "----------- virtualization OK --------------"
+    figlet "Virtualisation OK"
 fi
 
 rm virt.txt
-
 zgrep CONFIG_KVM /proc/config.gz
 
-# -------------------------------- init system specific command -----------------------------------------
+########## installing packages and dependencies using pacman ###############
 
 sudo $packageManager $flags $packages
 pid=$!
 wait $pid
 
-# -------------------------------- init system specific command -----------------------------------------
+########## initialising services #############
 
 sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
 
-# -------------------------------- init system specific command -----------------------------------------
+########## init system specific command ##########
 
 sudo usermod -a -G libvirt $(whoami)
 newgrp libvirt
 
-# -------------------------------- init system specific command -----------------------------------------
+######### init system specific command ########
 
 sudo systemctl restart libvirtd.service
 
-# -------------------------------- for nested virtual machines ------------------------------------------
+####### for nested virtual machines  #########
 
 echo "Do you want nested Virtualization? (0/1)"
 read nested
@@ -59,13 +59,14 @@ fi
 
 
 
-# -------------------------------- init system specific command -----------------------------------------
+# init system specific command 
 
 sudo nvim /etc/libvirt/libvirtd.conf
 
 # unix_sock_group = "libvirt"
 # unix_sock_rw_perms = "0770"
+# notify send these commands for 30 seconds or so.
 
-# -------------------------------- init system specific command -----------------------------------------
+# init system specific command
 
 notify-send "qemu installed"
