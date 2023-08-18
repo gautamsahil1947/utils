@@ -94,4 +94,6 @@ alias hss="hugo server --noHTTPCache"
 export PATH="/home/sahil/.config/repos/utils/bin:$PATH"
 alias dict="nvim /home/sahil/.config/repos/personalVault/files/dict.md"
 alias br="git branch"
-alias e="emacsclient -t -a ''"
+alias dsa="nvim /home/sahil/.config/repos/studies/notes/07-Personal-C++/"
+alias ssha='eval $(ssh-agent) && ssh-add'
+alias todo="nvim ~/.plans.md"

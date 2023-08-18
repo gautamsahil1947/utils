@@ -1,0 +1,12 @@
+#!/bin/bash
+
+ytdlpId=$(pgrep -f "yt-dlp")
+
+if [ -z $ytdlpId ]
+then
+    notify-send -i /home/sahil/.config/repos/Pictures/icons/cancel.png -r 12345677 "Running Delete Script" "No process to kill"
+else
+    kill $ytdlpId
+    notify-send -i /home/sahil/.config/repos/Pictures/icons/cancel.png -r 12345677 "Running Delete Script" "Killed $ytdlpId"
+fi
+
