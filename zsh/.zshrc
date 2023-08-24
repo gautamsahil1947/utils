@@ -87,13 +87,20 @@ setxkbmap -option caps:swapescape
 alias tr="git log --all --oneline --graph --decorate"
 alias cr="cd /home/sahil/.config/repos/"
 alias msu="sudo make clean install"
-alias ntodo="nvim /home/sahil/.config/repos/personalVault/files/README.md"
+# alias ntodo="nvim /home/sahil/.config/repos/personalVault/files/README.md"
 alias stat="git status"
 alias commit="git add .; git commit -m $1"
 alias hss="hugo server --noHTTPCache"
 export PATH="/home/sahil/.config/repos/utils/bin:$PATH"
-alias dict="nvim /home/sahil/.config/repos/personalVault/files/dict.md"
+# alias dict="nvim /home/sahil/.config/repos/personalVault/files/dict.md"
 alias br="git branch"
-alias dsa="nvim /home/sahil/.config/repos/studies/notes/07-Personal-C++/"
 alias ssha='eval $(ssh-agent) && ssh-add'
 alias todo="nvim ~/.plans.md"
+alias me="nvim /home/sahil/.config/repos/cpp/self-practice"
+alias dsa="nvim /home/sahil/.config/repos/cpp/college"
+
+
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m'
+fi
