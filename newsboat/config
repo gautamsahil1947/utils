@@ -26,6 +26,7 @@ browser "linkhandler %u"
 # d --> delete the queued download
 macro d set browser "deleteScript"; open-in-browser; set browser "linkhandler %u"
 macro a set browser "downloadScript"; open-in-browser; set browser "linkhandler %u"
+# macro o set browser "linkhandler %u"; open-in-browser-and-mark-read; set browser "linkhandler %u"
 
 
 

@@ -2,7 +2,7 @@
 
 status=$(xrandr -q | grep "^DP-1 connected")
 
-wallpaper="/home/sahil/.config/repos/Pictures/wallpapers/second.jpg"
+wallpaper="/home/sahil/.config/repos/Pictures/mainwallpapers/newsecond.jpg"
 
 if [ -z $status ]
 then
@@ -10,11 +10,12 @@ then
     xwallpaper --zoom $wallpaper
 else
 
-    result=$(printf "left\nright\n" | dmenu -p "Orientation: " -l 4 -vi)
+    result=$(printf "left\nright\nnone" | dmenu -p "Orientation: " -l 4 -vi)
 
     case $result in 
         "left")     xrandr --output DP-1 --auto --left-of eDP-1 &;;
         "right")    xrandr --output DP-1 --auto --right-of eDP-1 &;;
+        "none") ;;
     esac
 
     # wallpaper

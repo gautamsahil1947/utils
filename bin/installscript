@@ -1,0 +1,19 @@
+#!/bin/bash
+
+clear
+figlet install
+
+# get pid of the process $name
+# while the process is running
+# basically wait and update the pid every 2 seconds
+# to confirm whether it is still running or not
+
+name="dwm"
+pid=$(pidof -x $name)
+while [ -n "$pid" ]
+do
+    notify-send "$name is running." "$pid"
+    sleep 2
+    pid=$(pidof -x yay)
+done
+

@@ -95,7 +95,8 @@ export PATH="/home/sahil/.config/repos/utils/bin:$PATH"
 # alias dict="nvim /home/sahil/.config/repos/personalVault/files/dict.md"
 alias br="git branch"
 alias ssha='eval $(ssh-agent) && ssh-add'
-alias todo="nvim ~/.plans.md"
+# alias todo="nvim ~/.plans.md"
+alias todo="nvim /home/sahil/.config/repos/Pictures/README.md"
 alias me="nvim /home/sahil/.config/repos/cpp/self-practice"
 alias dsa="nvim /home/sahil/.config/repos/cpp/college"
 

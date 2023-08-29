@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# cd into the offline video directory
+archivesDir="/home/sahil/archives/personal/yt-dlp"
+cd
+cd $archivesDir
+
+# get the dmenu response of the answer
+ans=$(ls | dmenu -i -p "Videos: " -l 8 -vi)
+mpv "$archivesDir/$ans"
