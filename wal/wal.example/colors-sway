@@ -1,0 +1,21 @@
+set $wallpaper /home/sahil/.config/repos/Pictures/mainwallpapers/newsecond.jpg
+
+set $background #020307
+set $foreground #bfc0c1
+
+set $color0 #020307
+set $color1 #4A3C42
+set $color2 #334553
+set $color3 #3D5462
+set $color4 #4D4B54
+set $color5 #605959
+set $color6 #9E6B4B
+set $color7 #bfc0c1
+set $color8 #414245
+set $color9 #4A3C42
+set $color10 #334553
+set $color11 #3D5462
+set $color12 #4D4B54
+set $color13 #605959
+set $color14 #9E6B4B
+set $color15 #bfc0c1

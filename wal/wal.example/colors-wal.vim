@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/sahil/.config/repos/Pictures/mainwallpapers/newsecond.jpg"
+let background = "#020307"
+let foreground = "#bfc0c1"
+let cursor     = "#bfc0c1"
+
+" Colors
+let color0  = "#020307"
+let color1  = "#4A3C42"
+let color2  = "#334553"
+let color3  = "#3D5462"
+let color4  = "#4D4B54"
+let color5  = "#605959"
+let color6  = "#9E6B4B"
+let color7  = "#bfc0c1"
+let color8  = "#414245"
+let color9  = "#4A3C42"
+let color10 = "#334553"
+let color11 = "#3D5462"
+let color12 = "#4D4B54"
+let color13 = "#605959"
+let color14 = "#9E6B4B"
+let color15 = "#bfc0c1"
