@@ -2,11 +2,12 @@
 
 status=$(xrandr -q | grep "^DP-1 connected")
 
-wallpaper="/home/sahil/.config/repos/Pictures/mainwallpapers/newsecond.jpg"
+wallpaper="/home/$USER/.config/repos/Pictures/wallpapers/second.jpg"
 
 if [ -z $status ]
 then
     # single display
+    notify-send -i /home/$USER/.config/repos/Pictures/icons/monitor64.png "DP-1 Not connected"
     xwallpaper --zoom $wallpaper
 else
 
