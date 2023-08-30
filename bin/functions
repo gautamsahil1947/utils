@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "I want to define some functions here"
+echo "And then source them, use them..."

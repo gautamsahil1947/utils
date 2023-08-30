@@ -1,4 +1,5 @@
 #!/bin/bash
+# this was for demo
 
 clear
 figlet install

@@ -1,0 +1,25 @@
+#!/bin/bash
+# Change it to case statements
+# and add error handling
+
+downloadFunction() {
+    notify-send -i /home/sahil/.config/repos/Pictures/icons/download-folder.png -r 12105342 "Downloading video" "$1"
+    yt-dlp -S "res:720" -P /home/sahil/archives/personal/yt-dlp "$1" -o "%(title)s.%(ext)s" 1>/dev/null 2>&1 & 
+}
+
+# store the result
+clipboard=$(xclip -o)
+# clear the clipboard
+xsel -c
+
+if [ -z $1 ]
+then
+    if [ -n "$clipboard" ]
+    then
+        downloadFunction $clipboard
+    else
+        notify-send "No Nothing there" "$clipboard"
+    fi
+else
+    downloadFunction $1
+fi

@@ -24,8 +24,8 @@ browser "linkhandler %u"
 # Download script
 # a --> download the file.
 # d --> delete the queued download
-macro d set browser "deleteScript"; open-in-browser; set browser "linkhandler %u"
-macro a set browser "downloadScript"; open-in-browser; set browser "linkhandler %u"
+macro d set browser "delete"; open-in-browser; set browser "linkhandler %u"
+macro a set browser "download"; open-in-browser; set browser "linkhandler %u"
 # macro o set browser "linkhandler %u"; open-in-browser-and-mark-read; set browser "linkhandler %u"
 
 

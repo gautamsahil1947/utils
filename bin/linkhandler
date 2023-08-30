@@ -1,4 +1,5 @@
 #!/bin/bash
+# Improvement required
 
 # this script will get a link as first argument and will
 # open it in different applications based on what type
