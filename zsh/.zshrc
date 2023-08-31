@@ -91,7 +91,6 @@ alias msu="sudo make clean install"
 alias stat="git status"
 alias commit="git add .; git commit -m $1"
 alias hss="hugo server --noHTTPCache"
-export PATH="/home/sahil/.config/repos/utils/bin:$PATH"
 # alias dict="nvim /home/sahil/.config/repos/personalVault/files/dict.md"
 alias br="git branch"
 alias ssha='eval $(ssh-agent) && ssh-add'
