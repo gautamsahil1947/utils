@@ -1,0 +1,19 @@
++ '[' -f /home/sahil/.config/repos/personal/bookmarks.md ']'
++ true
++ bookmarkImage='-i /home/sahil/.config/repos/personal/icons/bookmark64.png'
+++ xdotool getwindowfocus
++ focused_window_id=18874371
+++ xprop -id 18874371
+++ awk -F '"' '/^WM_NAME/{$2=$2; print $2}'
++ window_title='Libera Chat - Brave'
+++ echo 'Libera Chat - Brave'
+++ grep -E 'Firefox|Brave'
++ isBrowser='Libera Chat - Brave'
++ '[' -n 'Libera Chat - Brave' ']'
++ /usr/bin/xdotool key ctrl+l key ctrl+c key Escape
+++ xclip -o
+Error: target STRING not available
++ clipboard=
++ echo '- 🛡️ [Libera Chat - Brave]()'
++ notify-send -r 123455 -i /home/sahil/.config/repos/personal/icons/bookmark64.png Bookmarks '\n\nLibera Chat - Brave'
++ xsel -c

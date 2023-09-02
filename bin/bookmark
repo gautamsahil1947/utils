@@ -1,4 +1,6 @@
 #!/bin/bash
+set -x
+exec 2>/home/sahil/log.txt
 
 # Check if the file exists. If not then create it
 [ -f "/home/$USER/.config/repos/personal/bookmarks.md" ]\
@@ -11,11 +13,11 @@ focused_window_id=$(xdotool getwindowfocus)
 window_title=$(xprop -id "$focused_window_id" | awk -F '"' '/^WM_NAME/{$2=$2; print $2}')
 isBrowser=$(echo "$window_title" | grep -E "Firefox|Brave")
 
-/usr/bin/xdotool key ctrl+l key ctrl+c key Escape
 
 if [ -n "$isBrowser" ] 
 then
     # run the xdotool commands
+    /usr/bin/xdotool key ctrl+l key ctrl+c key Escape
 
     # since we ran the xdotool commands, there has to be something on the clipboard
     clipboard=$(xclip -o)
