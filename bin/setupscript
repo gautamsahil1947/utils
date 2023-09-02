@@ -24,7 +24,7 @@ do
         # if the battery is not charging
         if [ $percentage -le 25 ]
         then
-            notify-send -u critical -t $time "Battery" "$percentage%" -i /home/sahil/.config/repos/Pictures/icons/battery64.png
+            notify-send -u critical -t $time "Battery" "$percentage%" -i /home/sahil/.config/repos/personal/icons/battery64.png
             i=0
         fi
 
@@ -32,13 +32,13 @@ do
         # if the battery is charging
         if [ $i -eq 0 ]
         then
-            notify-send -u low -t $time "Battery" "$percentage%" -i /home/sahil/.config/repos/Pictures/icons/battery64.png
+            notify-send -u low -t $time "Battery" "$percentage%" -i /home/sahil/.config/repos/personal/icons/battery64.png
             i=1
         fi
 
         if [ $percentage -ge 90 ]
         then
-            notify-send -u low -t $time "Unplug Charger" "$percentage%" -i /home/sahil/.config/repos/Pictures/icons/battery64.png
+            notify-send -u low -t $time "Unplug Charger" "$percentage%" -i /home/sahil/.config/repos/personal/icons/battery64.png
         fi
         fi
 

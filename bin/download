@@ -3,8 +3,8 @@
 # and add error handling
 
 downloadFunction() {
-    notify-send -i /home/sahil/.config/repos/Pictures/icons/download-folder.png -r 12105342 "Downloading video" "$1"
-    yt-dlp -S "res:720" -P /home/sahil/archives/personal/yt-dlp "$1" -o "%(title)s.%(ext)s" 1>/dev/null 2>&1 & 
+    notify-send -i /home/$USER/.config/repos/personal/icons/download-folder.png -r 12105342 "Downloading video" "$1"
+    yt-dlp -S "res:720" -P /home/$USER/.config/repos/archives/yt-dlp "$1" -o "%(title)s.%(ext)s" 1>/dev/null 2>&1 & 
 }
 
 # store the result

@@ -95,9 +95,10 @@ alias hss="hugo server --noHTTPCache"
 alias br="git branch"
 alias ssha='eval $(ssh-agent) && ssh-add'
 # alias todo="nvim ~/.plans.md"
-alias todo="nvim /home/sahil/.config/repos/Pictures/README.md"
+alias todo="nvim /home/sahil/.config/repos/personal/README.md"
 alias me="nvim /home/sahil/.config/repos/cpp/selfPractice"
 alias dsa="nvim /home/sahil/.config/repos/cpp/college"
+alias list="nvim /home/$USER/.config/repos/personal/bookmarks.md"
 
 
 if type rg &> /dev/null; then

@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Check if the file exists. If not then create it
+[ -f "/home/$USER/.config/repos/personal/bookmarks.md" ]\
+    && true || touch "/home/$USER/.config/repos/personal/bookmarks.md"
+
+bookmarkImage="-i /home/$USER/.config/repos/personal/icons/bookmark64.png"
+
+# get the focusted tile info (isbrowser?)
+focused_window_id=$(xdotool getwindowfocus)
+window_title=$(xprop -id "$focused_window_id" | awk -F '"' '/^WM_NAME/{$2=$2; print $2}')
+isBrowser=$(echo "$window_title" | grep -E "Firefox|Brave")
+
+/usr/bin/xdotool key ctrl+l key ctrl+c key Escape
+
+if [ -n "$isBrowser" ] 
+then
+    # run the xdotool commands
+
+    # since we ran the xdotool commands, there has to be something on the clipboard
+    clipboard=$(xclip -o)
+
+    echo "- 🛡️ [$window_title]($clipboard)" >>\
+        "/home/$USER/.config/repos/personal/bookmarks.md" && \
+        notify-send -r 123455 $bookmarkImage "Bookmarks" "$clipboard\n\n$window_title"
+
+    xsel -c
+fi
+
