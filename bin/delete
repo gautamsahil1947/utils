@@ -11,6 +11,6 @@ else
     # check if some parts are there, and if there, then delete them
 fi
 # if any parts are there, remove them
-parts=$(ls /home/$USER/archives/yt-dlp | grep -e "part$")
+parts=$(ls /home/$USER/.config/repos/archives/yt-dlp | grep -e "part$")
 [ -z "$parts" ] && true || rm /home/$USER/.config/repos/archives/yt-dlp/*.part
 

@@ -22,7 +22,8 @@ then
     echo "- 🛡️ [$window_title]($clipboard)" >>\
         "/home/$USER/.config/repos/personal/bookmarks.md" && \
         notify-send -r 123455 -t 800 $bookmarkImage "Bookmarks" "$clipboard\n\n$window_title"
-
-    xsel -c
+    
+    echo "$clipboard" | xclip -selection clipboard
+    echo "$clipboard" | xsel -i
 fi
 

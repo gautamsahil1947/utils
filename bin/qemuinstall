@@ -1,5 +1,6 @@
 #!/bin/bash
 
+distro="archBTW"
 # need to make it work with debian and fedora also
 # make it compatible with other init systems also
 
