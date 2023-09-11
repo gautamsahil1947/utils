@@ -10,6 +10,7 @@ figlet install
 # to confirm whether it is still running or not
 
 name="dwm"
+# pgrep -f name (works better, as it looks for processes)
 pid=$(pidof -x $name)
 while [ -n "$pid" ]
 do

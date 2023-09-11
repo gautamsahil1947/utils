@@ -1,16 +1,29 @@
 #!/bin/bash
+# in this one, it checks for whether mpv is running or not
+# but works iff only one mpv instance is running
 
-ytdlpId=$(pgrep -f "yt-dlp")
 
-if [ -z $ytdlpId ]
-then
-    notify-send -i /home/sahil/.config/repos/personal/icons/cancel.png -r 12345677 "Running Delete Script" "No process to kill"
-else
-    kill $ytdlpId
-    notify-send -i /home/sahil/.config/repos/personal/icons/cancel.png -r 12345677 "Running Delete Script" "Killed $ytdlpId"
-    # check if some parts are there, and if there, then delete them
-fi
-# if any parts are there, remove them
-parts=$(ls /home/$USER/.config/repos/archives/yt-dlp | grep -e "part$")
-[ -z "$parts" ] && true || rm /home/$USER/.config/repos/archives/yt-dlp/*.part
+ytdlpIdMaybeWithMpv=$(pgrep -f "yt-dlp")
+# get id's of all yt-dlp instances
+mpvPid=$(pgrep -f mpv)
+ytdlpId="$"
 
+for ytdlpId in $ytdlpIdMaybeWithMpv
+do
+    if [ "$ytdlpId" != "$mpvPid" ]
+    then
+
+        if [ -z $ytdlpId ]
+        then
+            notify-send -i /home/sahil/.config/repos/personal/icons/cancel.png -r 12345677 "Running Delete Script" "No process to kill"
+        else
+            kill $ytdlpId
+            notify-send -i /home/sahil/.config/repos/personal/icons/cancel.png -r 12345677 "Running Delete Script" "Killed $ytdlpId"
+            # check if some parts are there, and if there, then delete them
+        fi
+
+        # if any parts are there, remove them
+        parts=$(ls /home/$USER/.config/repos/archives/yt-dlp | grep -e "part$")
+        [ -z "$parts" ] && true || rm /home/$USER/.config/repos/archives/yt-dlp/*.part
+    fi
+done

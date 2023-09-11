@@ -1,4 +1,5 @@
 #!/bin/bash
+# basically make it in a way that it becomes a command line tool to install qemu on various distros
 
 distro="archBTW"
 # need to make it work with debian and fedora also
@@ -62,10 +63,11 @@ fi
 
 # init system specific command 
 
-sudo nvim /etc/libvirt/libvirtd.conf
+# sudo nvim /etc/libvirt/libvirtd.conf
 
 # unix_sock_group = "libvirt"
 # unix_sock_rw_perms = "0770"
+# These lines can be appended to the file, therefore no need to open any editor
 # notify send these commands for 30 seconds or so.
 
 # init system specific command

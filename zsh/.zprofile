@@ -2,6 +2,7 @@
 [[ -f ~/.zshrc ]] && . ~/.zshrc
 
 export PATH="/home/sahil/.config/repos/utils/bin:$PATH"
+export EDITOR=nvim
 
 
 if [ -z "$DISPLAY" ] && [ "$(fgconsole)" -eq 1 ]; then

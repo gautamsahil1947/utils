@@ -1,5 +1,6 @@
 #!/bin/bash
 # Improvement required
+# it is a mess
 
 # this script will get a link as first argument and will
 # open it in different applications based on what type
@@ -8,6 +9,8 @@
 
 if [ $# -ne 1 ]
 then
+    clipboard=$(xclip -o)
+    [ -n "$clipboard" ] && setsid -f mpv $clipboard > /dev/null 2>&1 && exit
     notify-send "Link Handler" "No URL" -i /home/sahil/.config/repos/personal/icons/youtube64.png
     exit 1
 else

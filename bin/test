@@ -1,14 +1,6 @@
 #!/bin/bash
 
-pid=$(pidof -x setupscript)
-
-if [ -n $pid ]
+if [ "$#" -gt 0 ]
 then
-        echo "non zero length"
-        echo $pid
-        kill $pid
-else 
-        echo "zero length"
-        echo $pid
-        kill $pid
+    echo < 0
 fi

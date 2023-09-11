@@ -1,4 +1,5 @@
 #!/bin/bash
+# I need to learn xclip xdotool ... (maybe at my job)
 
 bookmarkFile="/home/$USER/.config/repos/personal/bookmarks.md"
 bookmarkIcon="/home/$USER/.config/repos/personal/icons/bookmark64.png"

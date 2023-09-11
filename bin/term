@@ -1,0 +1,34 @@
+#!/bin/bash
+# this is a script for saving some note to termbin server (termbim.com)
+# and later share it. All notes last for one month.
+
+
+# Pseudocode
+#   if there is something in the clipboard --> use it
+#   else if there is something in $1 (basically being pipped into it) --> use it
+#   else notify && echo --> nothing to share
+
+# if successful, then copy the url in clipboard
+
+clipboard=$(xclip -o -selection clipboard)
+
+if [ -n "$clipboard" ]
+then
+    notify-send "Uploading from Clipboard" "$clipboard"
+    url=$(echo "$clipboard" | nc termbin.com 9999)
+
+    while [ -z "$url" ]
+    do
+        sleep 0.20
+    done
+
+    notify-send "Paste Url" "$url"
+    echo "$url" | xclip -selection clipboard
+    echo "$url" | xsel -i
+    exit
+else
+    notify-send "Clipboard Empty" 
+fi
+
+
+
