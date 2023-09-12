@@ -5,26 +5,28 @@
 
 # Pseudocode
 #   if there is something in the clipboard --> use it
-#   else if there is something in $1 (basically being pipped into it) --> use it
+#   else if there is something in $1 (basically being pipped into it) --> use it (pending)
 #   else notify && echo --> nothing to share
 
 # if successful, then copy the url in clipboard
 
 clipboard=$(xclip -o -selection clipboard)
+canNotify=$(command -v notify-send)
 
 if [ -n "$clipboard" ]
 then
-    notify-send "Uploading from Clipboard" "$clipboard"
+    [ -n "$canNotify" ] && notify-send "Uploading from Clipboard" "$clipboard"
     url=$(echo "$clipboard" | nc termbin.com 9999)
 
     while [ -z "$url" ]
     do
+        # waiting for url
         sleep 0.20
     done
 
     notify-send "Paste Url" "$url"
-    echo "$url" | xclip -selection clipboard
-    echo "$url" | xsel -i
+    echo "$url" | xclip -selection clipboard 
+    echo "$url" | xclip -selection primary
     exit
 else
     notify-send "Clipboard Empty" 
