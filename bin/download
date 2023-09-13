@@ -1,6 +1,8 @@
 #!/bin/bash
 # Change it to case statements
 # and add error handling
+# What if I want to download a playlist. then it will downlload it into the main
+# area, and will not make a folder. Therefore take a $2 argument also just in case
 
 downloadFunction() {
     notify-send -i /home/$USER/.config/repos/personal/icons/download-folder.png -r 12105342 "Downloading video" "$1"

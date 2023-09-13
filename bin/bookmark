@@ -10,10 +10,10 @@ focused_window_id=$(xdotool getwindowfocus)
 window_title=$(xprop -id "$focused_window_id" | awk -F '"' '/^WM_NAME/{$2=$2; print $2}')
 isBrowser=$(echo "$window_title" | grep -E "Firefox|Brave")
 
-/usr/bin/xdotool key --clearmodifiers ctrl+l key ctrl+c key Escape 
 
 if [ -n "$isBrowser" ] 
 then
+    /usr/bin/xdotool key --clearmodifiers ctrl+l key ctrl+c key Escape 
     # run the xdotool commands
 
     # since we ran the xdotool commands, there has to be something on the clipboard
@@ -24,6 +24,6 @@ then
         notify-send -r 123455 -t 800 $bookmarkImage "Bookmarks" "$clipboard\n\n$window_title"
     
     echo "$clipboard" | xclip -selection clipboard
-    echo "$clipboard" | xsel -i
+    echo "$clipboard" | xclip -selection primary
 fi
 

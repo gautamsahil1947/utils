@@ -31,6 +31,3 @@ then
 else
     notify-send "Clipboard Empty" 
 fi
-
-
-

@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# this one says
-# pgrep all the pids of current script
-#       if pid not equal to current script's pid
-#               kill it
+batteryIcon="-i /home/sahil/.config/repos/personal/icons/battery64.png"
 
+# kill all similarly named processes except this one
 for pid in $(pgrep -f $0); do
     if [ $pid != $$ ]; then
         kill $pid
@@ -21,26 +19,20 @@ do
 
     if [ -z $charging ]
     then
-        # if the battery is not charging
-        if [ $percentage -le 25 ]
-        then
-            notify-send -u critical -t $time "Battery" "$percentage%" -i /home/sahil/.config/repos/personal/icons/battery64.png
+        # if the battery is not charging 
+        #  -u critical -t $time
+        [ $percentage -le 25 ] && notify-send -r 1234543 "Battery" "$percentage%" \
+             $batteryIcon && \
             i=0
-        fi
-
     else
         # if the battery is charging
-        if [ $i -eq 0 ]
-        then
-            notify-send -u low -t $time "Battery" "$percentage%" -i /home/sahil/.config/repos/personal/icons/battery64.png
+        [ $i -eq 0 ] && notify-send -r 1234543 "Battery" "$percentage%" \
+            $batteryIcon && \
             i=1
-        fi
 
-        if [ $percentage -ge 90 ]
-        then
-            notify-send -u low -t $time "Unplug Charger" "$percentage%" -i /home/sahil/.config/repos/personal/icons/battery64.png
-        fi
-        fi
+        [ $percentage -ge 90 ] && notify-send -r 1234543 "Unplug Charger" "$percentage%" \
+            $batteryIcon
+    fi
 
-        sleep $(( $time / 1000 ))
-    done
+    sleep $(( $time / 1000 ))
+done

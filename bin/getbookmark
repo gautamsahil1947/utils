@@ -11,4 +11,4 @@ selection=$(xclip -o)
 result=$(echo "$selection" | awk -F'[()]' '{print $(NF-1)}')
 notify-send -i $bookmarkIcon "$result"
 echo "$result" | xclip -selection clipboard
-echo "$result" | xsel -i
+echo "$result" | xclip -selection primary

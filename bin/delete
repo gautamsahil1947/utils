@@ -1,6 +1,7 @@
 #!/bin/bash
 # in this one, it checks for whether mpv is running or not
 # but works iff only one mpv instance is running
+# What about removing them recursively (for the nexted folders by the new download)
 
 
 ytdlpIdMaybeWithMpv=$(pgrep -f "yt-dlp")

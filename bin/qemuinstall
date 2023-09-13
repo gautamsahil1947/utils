@@ -5,71 +5,66 @@ distro="archBTW"
 # need to make it work with debian and fedora also
 # make it compatible with other init systems also
 
+
+packageManager=yay
+flags="-S --noconfirm"
+dependencies=(
+    "virt-manager"
+    "qemu"
+    "vde2"
+    "ebtables"
+    "dnsmasq"
+    "bridge-utils"
+    "openbsd-netcat"
+)
+
+
+
 if commnad -v figlet > /dev/null
 then
     figlet QEMU
 fi
 
-packageManager=pacman
-flags="-S"
-packages="virt-manager qemu vde2 ebtables dnsmasq bridge-utils openbsd-netcat"
-
 
 ########## checking whether virtualization is enabled or not ###############
 
-LC_ALL=C lscpu | grep Virtualization >> virt.txt
-# left for AMD-v
-if grep -q "VT-x$" virt.txt 
-then
-    figlet "Virtualisation OK"
-fi
-
-rm virt.txt
+[ -n "$(LC_ALL=C lscpu | grep Virtualization | grep -E "VT-x|AMD-v")" ] && figlet Virtualization OK || figlet Virtualization NOT OK
 zgrep CONFIG_KVM /proc/config.gz
 
 ########## installing packages and dependencies using pacman ###############
 
-sudo $packageManager $flags $packages
-pid=$!
-wait $pid
+
+# install the packages here
+for package in "${dependencies[@]}"
+do
+    $packageManager $flags $package
+done
 
 ########## initialising services #############
 
-sudo systemctl enable libvirtd.service
-sudo systemctl start libvirtd.service
+sudo systemctl enable libvirtd.service &
+sudo systemctl start libvirtd.service &
 
 ########## init system specific command ##########
 
 sudo usermod -a -G libvirt $(whoami)
-newgrp libvirt
-
-######### init system specific command ########
-
-sudo systemctl restart libvirtd.service
-
-####### for nested virtual machines  #########
-
-echo "Do you want nested Virtualization? (0/1)"
-read nested
-
-if [ $nested -eq 1 ]
-then
-    sudo modprobe -r kvm_intel
-    sudo modprobe kvm_intel nested=1# 
-    echo "options kvm-intel nested=1" | sudo tee /etc/modprobe.d/kvm-intel.conf
-fi
-
-
-
-# init system specific command 
-
+newgrp libvirt &
+sudo systemctl restart libvirtd.service &
+# ######### init system specific command ########
+#
+#
+# ####### for nested virtual machines  #########
+sudo modprobe -r kvm_intel
+sudo modprobe kvm_intel nested=1# 
+echo "options kvm-intel nested=1" | sudo tee /etc/modprobe.d/kvm-intel.conf
+#
+#
+#
+# # init system specific command 
+#
 # sudo nvim /etc/libvirt/libvirtd.conf
-
-# unix_sock_group = "libvirt"
-# unix_sock_rw_perms = "0770"
-# These lines can be appended to the file, therefore no need to open any editor
-# notify send these commands for 30 seconds or so.
-
-# init system specific command
-
-notify-send "qemu installed"
+printf "unix_sock_group = \"libvirt\"\nunix_sock_rw_perms = \"0770\"" | sudo tee -a /etc/libvirt/libvirtd.conf
+# # set networkdefault to autostart && start
+#
+notify-send "qemu installed" "Restart Computer"
+#
