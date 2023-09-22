@@ -82,8 +82,11 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 alias ls='ls --color=auto'
 alias ll='ls -al --color=auto'
 alias grep='grep --color=auto'
+
 xset r rate 300 50
 setxkbmap -option caps:swapescape
+setxkbmap -option ctrl:swap_ralt_rctl  
+
 alias tr="git log --all --oneline --graph --decorate"
 alias cr="cd /home/sahil/.config/repos/"
 alias msu="sudo make clean install"
@@ -95,13 +98,17 @@ alias hss="hugo server --noHTTPCache"
 alias br="git branch"
 alias ssha='eval $(ssh-agent) && ssh-add'
 # alias todo="nvim ~/.plans.md"
-alias todo="nvim /home/sahil/.config/repos/personal/README.md"
-alias me="nvim /home/sahil/.config/repos/cpp/selfPractice"
+# alias todo="nvim /home/sahil/.config/repos/personal/README.md"
+alias todo="nvim /home/sahil/.config/repos/archives/README.md"
+alias me="nvim /home/sahil/.config/repos/cpp/"
 alias dsa="nvim /home/sahil/.config/repos/cpp/college"
 alias list="nvim /home/$USER/.config/repos/personal/bookmarks.md"
+alias bin="nvim /home/$USER/.config/repos/utils/bin"
+alias sc="nvim /home/$USER/.config/repos/scratchpad"
 
 
 if type rg &> /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files'
   export FZF_DEFAULT_OPTS='-m'
 fi
+

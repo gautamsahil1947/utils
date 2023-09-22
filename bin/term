@@ -12,19 +12,23 @@
 
 clipboard=$(xclip -o -selection clipboard)
 canNotify=$(command -v notify-send)
+linkImg="/home/sahil/.config/repos/personal/icons/link64.png"
+codeImg="/home/sahil/.config/repos/personal/icons/code64.png"
 
 if [ -n "$clipboard" ]
 then
-    [ -n "$canNotify" ] && notify-send "Uploading from Clipboard" "$clipboard"
+    [ -n "$canNotify" ] && notify-send -i $codeImg "Uploading from Clipboard" "$clipboard"
     url=$(echo "$clipboard" | nc termbin.com 9999)
 
-    while [ -z "$url" ]
-    do
-        # waiting for url
-        sleep 0.20
-    done
+    # redundent code here
+    # while [ -z "$url" ]
+    # do
+    #     # waiting for url
+    #     notify-send "Waiting for url"
+    #     sleep 0.20
+    # done
 
-    notify-send "Paste Url" "$url"
+    notify-send -i $linkImg "Paste Url" "$url"
     echo "$url" | xclip -selection clipboard 
     echo "$url" | xclip -selection primary
     exit

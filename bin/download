@@ -1,27 +1,30 @@
 #!/bin/bash
-# Change it to case statements
-# and add error handling
-# What if I want to download a playlist. then it will downlload it into the main
-# area, and will not make a folder. Therefore take a $2 argument also just in case
+
+#-----------------------------------------------------------------------------------
+
+downloadImage="/home/$USER/.config/repos/personal/icons/download-folder.png"
+downloadDirectory="/home/$USER/.config/repos/archives/yt-dlp"
+clipboardOutput=$(xclip -o -selection clipboard)
+# clear the clipboard
+# xsel -cb
 
 downloadFunction() {
-    notify-send -i /home/$USER/.config/repos/personal/icons/download-folder.png -r 12105342 "Downloading video" "$1"
-    yt-dlp -S "res:720" -P /home/$USER/.config/repos/archives/yt-dlp "$1" -o "%(title)s.%(ext)s" 1>/dev/null 2>&1 & 
+    notify-send -i $downloadImage -r 12105342 "Downloading video" "$1"
+    yt-dlp -P $downloadDirectory "$1" 1>/dev/null 2>&1 & 
 }
 
-# store the result
-clipboard=$(xclip -o)
-# clear the clipboard
-xsel -c
 
-if [ -z $1 ]
+if [ -n "$1" ] 
 then
-    if [ -n "$clipboard" ]
-    then
-        downloadFunction $clipboard
-    else
-        notify-send "No Nothing there" "$clipboard"
-    fi
+    downloadFunction "$1"
 else
-    downloadFunction $1
+    if [ -n "$clipboardOutput" ]
+    then
+        downloadFunction "$clipboardOutput"
+    else
+        notify-send -i $downloadImage "Downloading Video" "url = NILL"
+    fi
 fi
+
+#-----------------------------------------------------------------------------------
+

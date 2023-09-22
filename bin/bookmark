@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# but the thing is that this script is a workaround for a perfect
+# web browser. Therefore some extension should be developed for
+# doing this. (this can be a great idea for summers maybe)
+
 [ -f "/home/$USER/.config/repos/personal/bookmarks.md" ]\
     && true || touch "/home/$USER/.config/repos/personal/bookmarks.md"
 

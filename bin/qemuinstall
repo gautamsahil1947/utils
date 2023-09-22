@@ -42,14 +42,14 @@ done
 
 ########## initialising services #############
 
-sudo systemctl enable libvirtd.service &
-sudo systemctl start libvirtd.service &
+systemctl enable libvirtd.service
+systemctl start libvirtd.service
 
 ########## init system specific command ##########
 
-sudo usermod -a -G libvirt $(whoami)
-newgrp libvirt &
-sudo systemctl restart libvirtd.service &
+usermod -a -G libvirt $(whoami)
+# newgrp libvirt
+systemctl restart libvirtd.service
 # ######### init system specific command ########
 #
 #
@@ -63,7 +63,7 @@ echo "options kvm-intel nested=1" | sudo tee /etc/modprobe.d/kvm-intel.conf
 # # init system specific command 
 #
 # sudo nvim /etc/libvirt/libvirtd.conf
-printf "unix_sock_group = \"libvirt\"\nunix_sock_rw_perms = \"0770\"" | sudo tee -a /etc/libvirt/libvirtd.conf
+printf "%s\n%s" "unix_sock_group = \"libvirt\"" "unix_sock_rw_perms = \"0770\"" | sudo tee -a /etc/libvirt/libvirtd.conf
 # # set networkdefault to autostart && start
 #
 notify-send "qemu installed" "Restart Computer"

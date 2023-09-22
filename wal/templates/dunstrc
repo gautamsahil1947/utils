@@ -319,13 +319,13 @@
 [urgency_normal]
     foreground = "{color15}"
     background = "{color4}"
-    timeout = 5
+    timeout = 3
 
 [urgency_critical]
     background = "{color1}" 
     foreground = "{color15}"
     frame_color = "{color11}"
-    timeout = 10
+    timeout = 3
 
 
 # Every section that isn't one of the above is interpreted as a rules to

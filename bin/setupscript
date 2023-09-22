@@ -21,7 +21,7 @@ do
     then
         # if the battery is not charging 
         #  -u critical -t $time
-        [ $percentage -le 25 ] && notify-send -r 1234543 "Battery" "$percentage%" \
+        [ $percentage -le 25 ] && notify-send -u critical -r 1234543 "Battery" "$percentage%" \
              $batteryIcon && \
             i=0
     else
