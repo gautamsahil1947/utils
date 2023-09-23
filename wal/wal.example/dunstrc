@@ -312,20 +312,20 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#000104"
-    foreground = "#3f4042"
+    background = "#040506"
+    foreground = "#424344"
     timeout = 3
 
 [urgency_normal]
-    foreground = "#bfbfc0"
-    background = "#4D5055"
-    timeout = 5
+    foreground = "#c0c0c0"
+    background = "#526971"
+    timeout = 3
 
 [urgency_critical]
-    background = "#1B4454" 
-    foreground = "#bfbfc0"
-    frame_color = "#3A5A62"
-    timeout = 10
+    background = "#3E5861" 
+    foreground = "#c0c0c0"
+    frame_color = "#475C63"
+    timeout = 3
 
 
 # Every section that isn't one of the above is interpreted as a rules to
