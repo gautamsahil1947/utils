@@ -47,7 +47,7 @@ systemctl start libvirtd.service
 
 ########## init system specific command ##########
 
-usermod -a -G libvirt $(whoami)
+sudo usermod -a -G libvirt $(whoami)
 # newgrp libvirt
 systemctl restart libvirtd.service
 # ######### init system specific command ########

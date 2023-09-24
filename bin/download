@@ -3,7 +3,7 @@
 #-----------------------------------------------------------------------------------
 
 downloadImage="/home/$USER/.config/repos/personal/icons/download-folder.png"
-downloadDirectory="/home/$USER/.config/repos/archives/yt-dlp"
+downloadDirectory="/home/$USER/.config/archives/yt-dlp"
 clipboardOutput=$(xclip -o -selection clipboard)
 # clear the clipboard
 # xsel -cb

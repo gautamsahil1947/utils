@@ -29,5 +29,5 @@ fi
 # --------------------------------------------------------
 
 # Delete files with ".part" or ".ytdl" extensions in a specific directory without notifications
-target_directory="/home/sahil/.config/repos/archives/yt-dlp"
+target_directory="/home/sahil/.config/archives/yt-dlp"
 find "$target_directory" -type f \( -name "*.part" -o -name "*.ytdl" \) -delete
