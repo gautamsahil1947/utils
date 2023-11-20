@@ -4,4 +4,4 @@
 -o "%(playlist_index)s - %(title)s.%(ext)s"
 
 # Resolution Settings
--S "res:720"
+-S "res:1080"

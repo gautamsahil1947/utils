@@ -3,7 +3,7 @@
 #-----------------------------------------------------------------------------------
 
 downloadImage="/home/$USER/.config/repos/personal/icons/download-folder.png"
-downloadDirectory="/home/$USER/.config/archives/yt-dlp"
+downloadDirectory="/home/$USER/archives/yt-dlp"
 clipboardOutput=$(xclip -o -selection clipboard)
 # clear the clipboard
 # xsel -cb
@@ -28,3 +28,5 @@ fi
 
 #-----------------------------------------------------------------------------------
 
+# add another function that if brave or firefox is open, then download using
+# the url in the url bar, which you can grab using xdotool

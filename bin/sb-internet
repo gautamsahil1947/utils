@@ -11,7 +11,12 @@ if [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'up' ] ; then
      # strengthrem=$(($strength/10 )) # find the int division with 10
      # strength=$(( $strengthrem*10 )) # multiply with 10
 
-     wifiicon=" ($strength)"
+     # install wireless tools
+     hostname=$(iwgetid -r)
+     # short="${hostname:0:5}.."
+     short=$hostname
+     wifiicon="  $short"
+# ($strength)
      # case $strength in 
      #     100|90|80)     wifiicon="󰤨 ($strength)";;
      #     70|60|50)      wifiicon="󰤢 ($strength)";;
@@ -44,4 +49,5 @@ done
 # TUN
 [ -n "$(cat /sys/class/net/tun*/operstate 2>/dev/null)" ] && tunicon="🔒 "
 
-printf "[%s%s%s]\n" "$wifiicon" "$ethericon" "$usb"
+# printf "[%s%s%s]\n" "$wifiicon" "$ethericon" "$usb"
+printf " (%s%s%s) \n" "$wifiicon" "$ethericon" "$usb"

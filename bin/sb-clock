@@ -18,5 +18,5 @@ case "$clock" in
 	"12") icon="🕛" ;;
 esac
 
-string=$(date "+%Y %b %d] [$icon %I:%M%p]")
-echo "[📅 $string"
+string=$(date "+%Y %b %d)  ($icon %I:%M%p)")
+echo " (📅 $string "

@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cd /home/sahil/.config/repos/archives/cherno
+cd /home/sahil/archives/tutorials/cherno
 video=$(ls | dmenu -l 20 -vi)
 mpv "$video" 1>/dev/null 2>&1
